@@ -1,6 +1,8 @@
-# `sample-csv`
+# sample-csv
 
 A minimal CLI tool for sampling data from large CSV files.
+
+![sample-csv](/examples/demo.gif)
 
 **Usage**:
 
