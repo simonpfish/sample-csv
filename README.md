@@ -2,7 +2,7 @@
 
 A minimal CLI tool for sampling from large CSV files to reduce their size.
 
-![sample-csv](/examples/demo.gif)
+![sample-csv](https://raw.githubusercontent.com/simonpfish/sample-csv/main/examples/demo.gif)
 
 **Usage**:
 
