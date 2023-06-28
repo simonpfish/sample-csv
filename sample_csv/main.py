@@ -93,4 +93,4 @@ def sample_csv(
         style="yellow",
     )
     
-    console.print(table)
+    console.print(table, end="\n\n")

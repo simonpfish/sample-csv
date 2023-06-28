@@ -1,13 +1,13 @@
 # sample-csv
 
-A minimal CLI tool for sampling data from large CSV files.
+A minimal CLI tool for sampling from large CSV files to reduce their size.
 
 ![sample-csv](/examples/demo.gif)
 
 **Usage**:
 
 ```console
-$ sample-csv [OPTIONS] INPUT_PATH [PERCENTAGE]
+$ sample-csv INPUT_PATH [PERCENTAGE]
 ```
 
 **Arguments**:
