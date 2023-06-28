@@ -45,17 +45,19 @@ def sample_csv(
     output_path = os.path.join(os.path.dirname(input_path), sampled_file_name)
 
     console.print(
-        f"Sampling [yellow]{percentage_str}%[/yellow] of rows into [magenta]{output_path}[/magenta]"
+        f"\nSampling [yellow]{percentage_str}%[/yellow] of rows into [magenta]{output_path}[/magenta]\n"
     )
 
     with open(
         input_path,
         "rb",
-        description="Reading file...",
+        description="",
     ) as f:
         num_lines = sum(1 for _ in f)
+    
+    console.print()
 
-    with Status("Sampling...", console=console):
+    with Status("Sampling", console=console):
         skip = int(num_lines * (1 - percentage))
         skip_ids = sorted(random.sample(range(1, num_lines + 1), skip))  # 0-indexed
         df = pd.read_csv(input_path, skiprows=skip_ids)
@@ -63,20 +65,21 @@ def sample_csv(
     # Check if the output file already exists
     if os.path.exists(output_path):
         typer.confirm(
-            f"The file {output_path} already exists. Do you want to overwrite it?",
+            f"The file {output_path} already exists.\nDo you want to overwrite it?",
             abort=True,
             default=True,
         )
+        console.print()
 
-    with Status("Writing to new file...", console=console):
+    with Status("Writing to new file", console=console):
         # Save the DataFrame to a new CSV file
         df.to_csv(output_path, index=False)
 
     # Create a table for the output
     table = Table(title="")
 
-    table.add_column("Input")
-    table.add_column("Output")
+    table.add_column("Original")
+    table.add_column("Sampled")
 
     table.add_row(input_path, output_path, style="magenta")
     table.add_row(
@@ -89,5 +92,5 @@ def sample_csv(
         f"{df.shape[0]} rows",
         style="yellow",
     )
-
+    
     console.print(table)
