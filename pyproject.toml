@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sample-csv"
-version = "0.1.0"
+version = "1.0.0"
 description = ""
 authors = ["simonpfish <simonpfish@gmail.com>"]
 readme = "README.md"
